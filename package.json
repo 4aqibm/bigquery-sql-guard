@@ -1,0 +1,44 @@
+{
+  "name": "bigquery-sql-guard",
+  "version": "0.1.0",
+  "description": "Check BigQuery SQL written by an LLM (or a user) before it runs: read-only, one statement, allowed datasets, row limits.",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./src/index.js"
+    }
+  },
+  "files": [
+    "src",
+    "index.d.ts"
+  ],
+  "scripts": {
+    "test": "node --test test/"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "bigquery",
+    "sql",
+    "llm",
+    "text-to-sql",
+    "nl2sql",
+    "guardrails",
+    "validation",
+    "security"
+  ],
+  "author": "Mohammed Aaqibuddin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4aqibm/bigquery-sql-guard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/4aqibm/bigquery-sql-guard/issues"
+  },
+  "homepage": "https://github.com/4aqibm/bigquery-sql-guard#readme"
+}
