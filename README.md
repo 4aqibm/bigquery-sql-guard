@@ -1,5 +1,6 @@
 # bigquery-sql-guard
 
+[![npm](https://img.shields.io/npm/v/bigquery-sql-guard.svg)](https://www.npmjs.com/package/bigquery-sql-guard)
 [![CI](https://github.com/4aqibm/bigquery-sql-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/4aqibm/bigquery-sql-guard/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
