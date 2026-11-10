@@ -1,5 +1,8 @@
 # bigquery-sql-guard
 
+[![CI](https://github.com/4aqibm/bigquery-sql-guard/actions/workflows/ci.yml/badge.svg)](https://github.com/4aqibm/bigquery-sql-guard/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Check BigQuery SQL before it runs.
 
 If an LLM writes SQL for your users (text-to-SQL, chat-with-your-data, agents), you need a cheap, predictable check between the model and the warehouse. `bigquery-sql-guard` reads the query without calling BigQuery and tells you, in plain language, why it should not run:
@@ -53,6 +56,11 @@ try {
 }
 ```
 
+## Examples
+
+- [examples/claude-retry-loop.js](examples/claude-retry-loop.js): ask Claude for SQL, check it, and send the reasons back until the query passes.
+- [examples/run-on-bigquery.js](examples/run-on-bigquery.js): check a query, then run it on BigQuery with a cap on bytes billed.
+
 ## Options
 
 | Option | Default | What it does |
@@ -76,7 +84,7 @@ It does not fully parse GoogleSQL. A query it accepts can still fail in BigQuery
 
 ## Contributing
 
-Issues and pull requests are welcome, especially real queries that the guard gets wrong. Please add a test in `test/` with the query.
+Issues and pull requests are welcome, especially real queries that the guard gets wrong. See [CONTRIBUTING.md](CONTRIBUTING.md), and look for `good first issue` labels. Security problems go through [SECURITY.md](SECURITY.md).
 
 ```sh
 npm test

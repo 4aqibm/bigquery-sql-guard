@@ -1,0 +1,35 @@
+name: Query handled wrong
+description: The guard accepted a query it should reject, or rejected one it should accept.
+labels: [bug]
+body:
+  - type: textarea
+    id: query
+    attributes:
+      label: Query
+      description: Rename private tables if you need to.
+      render: sql
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options passed to checkSql
+      render: js
+      placeholder: "{ allowedDatasets: ['sales'], maxLimit: 1000 }"
+  - type: dropdown
+    id: expected
+    attributes:
+      label: What should happen?
+      options:
+        - It should be accepted
+        - It should be rejected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead
+      description: Paste the issues array or the error.
+  - type: markdown
+    attributes:
+      value: "If the guard **accepted** a query that writes data or reads a disallowed dataset, please report it privately from the Security tab instead."

@@ -103,6 +103,16 @@ test('allowedDatasets limits which datasets can be read', () => {
   assert.deepEqual(codes('SELECT a, b FROM sales.o JOIN sales.c USING (id, k) WHERE x IN (1, 2)', opts), []);
 });
 
+test('wildcard tables and time travel are read correctly', () => {
+  const opts = { allowedDatasets: ['ga4', 'sales'] };
+  const wildcard = "SELECT * FROM `proj.ga4.events_*` WHERE _TABLE_SUFFIX BETWEEN '20260101' AND '20260131'";
+  assert.deepEqual(codes(wildcard, opts), []);
+  assert.deepEqual(tableNames(wildcard), ['proj.ga4.events_*']);
+  const timeTravel =
+    'SELECT * FROM sales.o FOR SYSTEM_TIME AS OF TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 1 HOUR), hr.x';
+  assert.deepEqual(codes(timeTravel, opts), ['dataset_not_allowed']);
+});
+
 test('INFORMATION_SCHEMA and table functions are blocked unless allowed', () => {
   assert.deepEqual(codes('SELECT * FROM sales.INFORMATION_SCHEMA.TABLES'), ['information_schema']);
   assert.deepEqual(codes('SELECT * FROM `region-us`.INFORMATION_SCHEMA.JOBS'), ['information_schema']);
