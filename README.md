@@ -61,6 +61,7 @@ try {
 
 - [examples/claude-retry-loop.js](examples/claude-retry-loop.js): ask Claude for SQL, check it, and send the reasons back until the query passes.
 - [examples/run-on-bigquery.js](examples/run-on-bigquery.js): check a query, then run it on BigQuery with a cap on bytes billed.
+- [examples/langchain-tool.js](examples/langchain-tool.js): expose the guard as a LangChain tool and return validation issues so the model can revise rejected SQL.
 
 ## Options
 
